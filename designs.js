@@ -15,7 +15,4 @@ $('#inputWidth').on('change paste keyup',function() {
 
 function makeGrid() {
     
-    console.log(gridHeight);
-    $('h1').text(gridHeight);
-    console.log($('h1').text());
 }
