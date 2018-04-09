@@ -14,21 +14,26 @@ $('#inputWeight').on('change paste keyup',function() {
 });
 
 $(document).ready(function(){
-    $('#submit_button').click(function(e){
-        console.log("GridHeight:",gridHeight);
-        console.log("GridWidth:",gridWidth);
+    $('#submit_button').click(function(e){        
         e.preventDefault();
-        makeGrid();
+        makeGrid();        
     });
 });
 
 function makeGrid() {
-    console.log("Hey");
+    // location.reload();
+    generateTable();
+    $('#pixelCanvas').remove(".gridTable");
+    
+}
+
+function generateTable() {
     // get the reference for the body
     var body = document.getElementsByTagName("body")[0];
    
     // creates a <table> element and a <tbody> element
     var tbl = document.createElement("table");
+    tbl.className = "gridTable";
     var tblBody = document.createElement("tbody");
    
     // creating all cells
@@ -41,8 +46,7 @@ function makeGrid() {
         // node the contents of the <td>, and put the <td> at
         // the end of the table row
         var cell = document.createElement("td");
-        var cellText = document.createTextNode("cell in row "+i+", column "+j);
-        cell.appendChild(cellText);
+        
         row.appendChild(cell);
       }
    
@@ -56,5 +60,6 @@ function makeGrid() {
     body.appendChild(tbl);
     // sets the border attribute of tbl to 2;
     tbl.setAttribute("border", "2");
-}
 
+    document.getElementById("pixelCanvas").appendChild(tbl); 
+}
