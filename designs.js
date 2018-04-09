@@ -4,8 +4,8 @@
 // When size is submitted by the user, call makeGrid()
 var gridHeight = 1;
 var gridWidth = 1;
+var gridColor = "black";
 
-// $('#submit_button').click(makeGrid());
 $('#inputHeight').on('change paste keyup',function() {
     gridHeight = $('#inputHeight').val();
     limitControl($(this));
@@ -14,6 +14,11 @@ $('#inputWeight').on('change paste keyup',function() {
     gridWidth = $('#inputWeight').val();
     limitControl($(this));
 });
+
+colorPicker.addEventListener("change", function() {
+    gridColor = this.value;
+})
+
 
 $(document).ready(function(){
     $('#submit_button').click(function(e){        
@@ -50,6 +55,10 @@ function generateTable() {
         // the end of the table row
         var cell = document.createElement("td");
         
+        cell.addEventListener("click", function() {
+            this.style.backgroundColor = gridColor;
+        })
+
         row.appendChild(cell);
       }
    
