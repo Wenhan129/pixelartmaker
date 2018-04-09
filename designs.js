@@ -8,9 +8,11 @@ var gridWidth = 1;
 // $('#submit_button').click(makeGrid());
 $('#inputHeight').on('change paste keyup',function() {
     gridHeight = $('#inputHeight').val();
+    limitControl($(this));
 });
 $('#inputWeight').on('change paste keyup',function() {
     gridWidth = $('#inputWeight').val();
+    limitControl($(this));
 });
 
 $(document).ready(function(){
@@ -27,6 +29,7 @@ function makeGrid() {
 }
 
 function generateTable() {
+    // Clear the table generated last time
     document.getElementById("pixelCanvas").innerHTML = "";
     // get the reference for the body
     var body = document.getElementsByTagName("body")[0];
@@ -62,4 +65,9 @@ function generateTable() {
     tbl.setAttribute("border", "2");
 
     document.getElementById("pixelCanvas").appendChild(tbl); 
+}
+
+function limitControl(input) {
+    if ((input.val() > 100)||(input.val() < 0))
+        input.val(1);
 }
