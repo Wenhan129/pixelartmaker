@@ -22,12 +22,12 @@ $(document).ready(function(){
 
 function makeGrid() {
     // location.reload();
-    generateTable();
-    $('#pixelCanvas').remove(".gridTable");
+    generateTable();   
     
 }
 
 function generateTable() {
+    document.getElementById("pixelCanvas").innerHTML = "";
     // get the reference for the body
     var body = document.getElementsByTagName("body")[0];
    
